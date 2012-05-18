@@ -35,15 +35,15 @@ personal = {
     'lname': 'Levine',
     'name_oncard': 'Thomas Levine',
     'empid': '',
-    'classyear': '1337',
-    'spousename': 'Thomas Levine',
-    'spouseyear': '31337',
-    'matchcomp': 'Industrial Peanut Butterer Parts & Supplies and Bagels Company',
+    'classyear': '',
+    'spousename': '',
+    'spouseyear': '',
+    'matchcomp': '',
     'address': '54 Walworth Avenue',
     'address2': '',
     'city': 'Scarsdale',
     'state': 'NY',
-    'province': 'NY',
+    'province': '',
     'postal_code': '10583-1423',
     'country': 'US',
     'email': '',
@@ -86,15 +86,15 @@ payment_base = {
     'PONUM': '10583-1423',
     'flag3dSecure': '',
     'swipeData': '0',
-#   'SECURETOKEN': '',
-#   'SECURETOKENID': '',
+    'SECURETOKEN': None,
+    'SECURETOKENID': None,
     'PARMLIST': '',
     'MODE': 'live',
     'referringTemplate': 'minlayout',
     'pay.x': 'Pay Now',
 }
 
-credit_card = loads('creditcard.json')
+credit_card = loads(open('creditcard.json').read())
 
 # Go to the first page
 r = s.get('http://www.alumni.cornell.edu/seniorclass/give/')
@@ -129,3 +129,6 @@ for securetoken in ['SECURETOKEN', 'SECURETOKENID']:
             'There should be exactly one %s, but there are %d.' %
             (securetoken, len(values))
         )
+
+r = s.post('https://payflowlink.paypal.com/processTransaction.do', payment)
+print r.text
