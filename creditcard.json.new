@@ -1,0 +1,11 @@
+This file is purposely invalid JSON so that you don't accidentally
+submit an invalid credit card and come across as some criminal.
+Delete the lines up to the starting curly brace one once you've
+adjusted the rest of the information. .gitignore should already
+include 'creditcard.json', but check to be sure.
+{
+    'CARDNUM': '1234123412341234',
+    'EXPMONTH': '01',
+    'EXPYEAR': '13',
+    'CVV2': '123',
+}

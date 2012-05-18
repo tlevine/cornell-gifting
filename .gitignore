@@ -1,0 +1,9 @@
+# For security
+creditcard.json
+
+# For testing
+*.html
+
+# Standard stuff
+*.pyc
+*.sw[op]
